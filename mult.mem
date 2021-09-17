@@ -1,0 +1,28 @@
+@0000 7a00 // ldi r10, 0    label: main    target label: A
+@0001 7b08 // ldi r11, 8
+@0002 5aab // shl r10, r10, r11
+@0003 7b16 // ldi r11, 22    target label: A
+@0004 37ab // or r7, r10, r11
+@0005 8107 // ld r1, r7, 0
+@0006 8217 // ld r2, r7, 1
+@0007 7308 // ldi r3, 8
+@0008 7401 // ldi r4, 1
+@0009 7a01 // ldi r10, 1
+@000a d00d // jal 0xD    target label: loop
+@000b 9207 // st r0, r7, 2
+@000c f000 // sys 0
+@000d b083 // bz r3, 8    label: loop    target label: finish
+@000e 2542 // and r5, r4, r2
+@000f b025 // bz r5, 2    target label: shift
+@0010 0001 // add r0, r0, r1
+@0011 511a // shl r1, r1, r10    label: shift
+@0012 544a // shl r4, r4, r10
+@0013 133a // sub r3, r3, r10
+@0014 af90 // br -7    target label: loop
+@0015 e0f0 // jr r15    label: finish
+
+// .data
+@0016 0003 //  label: A
+@0017 0005 //
+@0018 0000 //
+
